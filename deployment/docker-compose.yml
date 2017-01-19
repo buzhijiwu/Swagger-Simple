@@ -1,0 +1,11 @@
+ version: '2'
+ services:
+   swagger:
+     image: course_swagger
+     env_file: env
+     ports:
+        - "8036:80"
+     volumes:
+        - ../:/data/patsnap/swagger
+     restart: always
+     privileged: true

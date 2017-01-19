@@ -1,0 +1,133 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "学院swagger演示"
+  },
+  "host": "dev-apix.zhihuiya.com",
+  "basePath": "/",
+  "tags": [
+    {"name": "video","description": "课程"},
+    {"name": "user","description": "用户"}
+  ],
+  "paths": {
+    "/1.0/users/users/get_video_part?video_id={video_id}&part_id={part_id}": {
+      "get": {
+        "tags": ["video"],
+        "summary": "获取子课程信息",
+        "description": "接口详细描述",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "video_id",
+            "description": "视频ID",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "path",
+            "name": "part_id",
+            "description": "子课程ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/part_info"
+            }
+          },
+          "400": {
+            "description": "参数有误"
+          }
+        }
+      }
+    },
+    "/1.0/users/users/post_update_username": {
+      "post": {
+        "tags": ["user"],
+        "summary": "更新用户名",
+        "description": "更新用户名详细描述",
+        "parameters": [
+          {
+            "in": "body",
+            "description": "子课程信息",
+            "schema": {
+              "$ref": "#/definitions/part_info"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "properties": {
+                "data": {
+                  "schema": {
+                    "properties": {
+                      "status": {
+                        "description": "Status",
+                        "type": "integer"
+                      },
+                      "code": {
+                        "description": "Code",
+                        "type": "integer"
+                      },
+                      "msg": {
+                        "description": "Message",
+                        "type": "string"
+                      },
+                      "content": {
+                        "schema": {
+                          "properties": {
+                            "inviteInfo": {
+                              "schema": {
+                                "properties": {
+                                  "inviteCount": {
+                                    "description": "已经邀请的数量",
+                                    "type": "integer"
+                                  },
+                                  "moreUser": {
+                                    "description": "还差多少人，可以领下一等级的福利",
+                                    "type": "integer"
+                                  },
+                                  "benefit": {
+                                    "description": "下一等级的福利",
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "part_info": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "子课程ID"
+        },
+        "video_id": {
+          "type": "integer",
+          "description": "相关课程ID"
+        },
+        "part_name": {
+          "type": "integer",
+          "description": "子课程名称"
+        }
+      }
+    }
+  }
+}
